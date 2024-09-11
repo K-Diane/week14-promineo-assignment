@@ -1,6 +1,6 @@
 import "./RecipeCard.css";
 
-import { Recipe } from "../../type";
+import { Recipe } from "../type";
 
 // Props interface for the recipe card and one recipe will be displayed
 interface RecipeCardProps {

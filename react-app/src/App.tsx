@@ -9,9 +9,9 @@ export default function App() {
     <div className="container">
       <div className="sidebar">
         <Sidebar />
-        <div className="main-content">
-          <RecipeList recipes={recipes} />
-        </div>
+      </div>
+      <div className="main-content">
+        <RecipeList recipes={recipes} />
       </div>
     </div>
   );

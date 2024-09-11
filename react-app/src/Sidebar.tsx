@@ -4,7 +4,8 @@ export default function Sidebar() {
     <div className="sidebar">
       <h2>Recipe App</h2>
       <button>Add Recipe</button>
-      <button>Remove Recipe</button>
+      <button>Delete Recipe</button>
+      <button>Update Recipe</button>
     </div>
   );
 }

@@ -1,6 +1,8 @@
-import RecipeCard from "../assets/RecipeCard/RecipeCard";
+import RecipeCard from "../RecipeCard/RecipeCard";
 
 import { Recipe } from "../type";
+
+import "./RecipeList.css";
 
 //Props interface for the recipe list and Array of recipes to be displayed
 interface RecipeListProps {
