@@ -42,32 +42,46 @@ const RecipeCard = ({
     //  button to submit the add recipe form and also button to cancel and reset the form
     // button Call delete function with recipe ID
 
-    <div className="recipe-card">
+    //className="recipe-card"
+
+    <div className="card mb-4 shadow-sm">
       <img src={recipes.imgUrl} alt={recipes.name} className="recipe-image" />
       <div className="card-body">
-        <h3>{recipes.name}</h3>
-        <p>{recipes.description}</p>
+        <h3 className="card-title">{recipes.name}</h3>
+        <p className="card-text">{recipes.description}</p>
 
         {showForm && (
           <form onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <label>Description:</label>
-            <input
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <label>Image URL:</label>
-            <input
-              type="text"
-              value={imgUrl}
-              onChange={(e) => setImgUrl(e.target.value)}
-            />
+            <div className="mb-3">
+              <label className="form-label">Name:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Description:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Image URL:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={imgUrl}
+                onChange={(e) => setImgUrl(e.target.value)}
+              />
+            </div>
+
             <button type="submit" className="btn btn-primary">
               Submit
             </button>

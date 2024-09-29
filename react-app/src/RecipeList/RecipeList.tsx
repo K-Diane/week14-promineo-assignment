@@ -20,15 +20,19 @@ const RecipeList = ({
   onUpdateRecipe,
 }: RecipeListProps) => {
   return (
-    // look over the array of recipes and render a RecipeCard for each
-    <div className="recipe-list">
+    // look or map over the array of recipes and render a RecipeCard for each
+
+    <div className="row">
       {recipes.map((recipe) => (
-        <RecipeCard
-          key={recipe.id} // unique for each recipe card
-          recipes={recipe} // Updated to pass the whole recipe
-          onUpdateRecipe={onUpdateRecipe} // Pass the update function
-          onDeleteRecipe={onDeleteRecipe} //pass the delete function
-        />
+        // //key={recipe.id} // unique for each recipe card
+
+        <div className="col-md-4" key={recipe.id}>
+          <RecipeCard
+            recipes={recipe} // Updated to pass the whole recipe
+            onUpdateRecipe={onUpdateRecipe} // Pass the update function
+            onDeleteRecipe={onDeleteRecipe} //pass the delete function
+          />
+        </div>
       ))}
     </div>
   );
