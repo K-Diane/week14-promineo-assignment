@@ -39,7 +39,7 @@ const RecipeCard = ({
   return (
     // show the recipe image, name and descriprion
     // show the field to input name, description and image URL for the recipe and update the state using the event target value
-    //  button to submit the add recipe form and also button to cancel and reset the form
+    //  button to submit the update recipe form and also button to cancel and reset the form
     // button Call delete function with recipe ID
 
     //className="recipe-card"
