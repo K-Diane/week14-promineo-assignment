@@ -1,41 +1,93 @@
 import "./App.tsx";
 import { useState } from "react";
+import { Recipe } from "./type.ts";
 
 // Define the props interface
 interface SidebarProps {
-  onAddRecipe: () => void;
-  onDeleteRecipe: (id: string) => void;
-  onUpdateRecipe: (id: string) => void;
+  recipes: Recipe[];
+  onAddRecipe: (newRecipe: Recipe) => void;
 }
-//sidebar give navigation options whether to add , remove and update recipe
+// sidebar give navigation options whether to add recipe
 
-const sidebar = ({
-  onAddRecipe,
-  onDeleteRecipe,
-  onUpdateRecipe,
-}: SidebarProps) => {
-  const [selectedRecipeId, setSelectedRecipeId] = useState<string>("");
+const sidebar = ({ recipes, onAddRecipe }: SidebarProps) => {
+  const [showForm, setShowForm] = useState<boolean>(false);
 
-  const handleDeleleButton = () => {
-    onDeleteRecipe(selectedRecipeId);
-    setSelectedRecipeId("");
+  const [newRecipeName, setNewRecipeName] = useState("");
+  const [newRecipeDescription, setNewRecipeDescription] = useState("");
+  const [newRecipeImgUrl, setNewRecipeImgUrl] = useState("");
+
+  const handleAddRecipe = () => {
+    console.log({
+      newRecipeName,
+      newRecipeDescription,
+      newRecipeImgUrl,
+    });
+    if (!newRecipeName || !newRecipeDescription || !newRecipeImgUrl) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    const newRecipe: Recipe = {
+      id: (recipes.length + 1).toString(),
+      name: newRecipeName,
+      description: newRecipeDescription,
+      imgUrl: newRecipeImgUrl,
+    };
+    onAddRecipe(newRecipe);
+    setShowForm(false);
+    // Reset form fields
+    resetForm();
+  };
+  const resetForm = () => {
+    setNewRecipeName("");
+    setNewRecipeDescription("");
+    setNewRecipeImgUrl("");
+    setShowForm(false); // Hide the form
   };
 
-  const handleUpdateButton = () => {
-    onUpdateRecipe(selectedRecipeId);
-  };
   return (
     <div className="sidebar">
       <h2>Recipe App</h2>
-      <button className="btn btn-primary" onClick={onAddRecipe}>
-        Add Recipe
+      <button
+        className="btn btn-primary"
+        onClick={() => setShowForm(!showForm)}
+      >
+        {showForm ? "Hide Form" : "Add New Recipe"}
       </button>
-      <button className="btn btn-danger" onClick={handleDeleleButton}>
-        Delete Recipe
-      </button>
-      <button className="btn btn-secondary" onClick={handleUpdateButton}>
-        Update Recipe
-      </button>
+
+      {showForm && (
+        <div>
+          <h3>Add New Recipe</h3>
+
+          <input
+            type="text"
+            placeholder="Recipe Name"
+            value={newRecipeName}
+            onChange={(e) => setNewRecipeName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            value={newRecipeDescription}
+            onChange={(e) => setNewRecipeDescription(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Image URL"
+            value={newRecipeImgUrl}
+            onChange={(e) => setNewRecipeImgUrl(e.target.value)}
+          />
+          <button className="btn btn-primary" onClick={handleAddRecipe}>
+            Submit
+          </button>
+          <button className="btn btn-secondary" onClick={resetForm}>
+            Cancel
+          </button>
+          <button className="btn btn-primary" onClick={handleAddRecipe}>
+            Add Recipe
+          </button>
+        </div>
+      )}
     </div>
   );
 };

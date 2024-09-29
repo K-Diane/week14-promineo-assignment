@@ -3,7 +3,7 @@
 export const recipes = [
   {
     id: "1",
-    name: "Ratatoulle",
+    name: "Ratatouille",
     description:
       "Sauted or roasted vegetables made with eggplant zuchini tomatoes onions and red pepper with a little salt and garlic",
     imgUrl:
